@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "892968088547",
+    "project_id": "weds360-2d8e3",
+    "storage_bucket": "weds360-2d8e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892968088547:android:9615b091a8acc3b6cc66d6",
+        "android_client_info": {
+          "package_name": "com.alimotie.weds360"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892968088547-v2jc4uu6bfpqgka71pfoovdnfrmks2i6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alimotie.weds360",
+            "certificate_hash": "19af81c1326d69f0f8195513835a7855c0793da8"
+          }
+        },
+        {
+          "client_id": "892968088547-g5dp7qti89sb8toe9u2sq00ml95t2mbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpbTB8HTfIUInd5wpBggQWhGdh-Bhfj94"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892968088547-g5dp7qti89sb8toe9u2sq00ml95t2mbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
