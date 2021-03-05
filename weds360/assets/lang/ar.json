@@ -1,0 +1,24 @@
+{
+    "onbording_screen_one_label" : "قم بإنشاء الموقع الخاص بك",
+    "onbording_screen_one_Descreption" : "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها",
+    "onbording_screen_one_skip_Button" : "تخطى",
+    "onbording_screen_one_next_Button" : "التالي",
+     "onbording_screen_one_start_Button" : "أبدء",
+    "login_screen_label" : "تسجيل الدخول",
+    "email_Text_filied_Label" : "البريد الاليكتروني",
+    "password_Text_filied_Label" : "كلمه السر",
+    "forget_passwrod_Button" : "نسيت كلمة المرور؟",
+    "login_Button" : "تسجيل الدخول",
+    "create_account_Button" : "إنشاء حساب؟",
+    "error_messege_Email" : "أدخل بريد إلكتروني صالح",
+    "error_messege_Password" : "يجب أن تتكون كلمة المرور من 8 أحرف وحرف كبير واحد ورقم أو حرف خاص",
+    "forgert_password_Button" : "إرسال",
+    "forget_password_close_Button" : "أغلق",
+    "home_screen_label" : "الصفحة الرئيسية",
+    "recomended_componant_Button" : "اقرأ أكثر",
+    "home_screen_top_Tab" : "الأفضل",
+    "home_screen_popular_Tab" : "شائع",
+    "home_screen_trending_Tab" : "منتشر",
+    "signup_screen_label" : "إنشاء حساب"
+
+}

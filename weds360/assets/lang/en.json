@@ -1,0 +1,25 @@
+{   
+    "onbording_screen_one_label" : "Create your website",
+    "onbording_screen_one_Descreption" : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    "onbording_screen_one_skip_Button" : "Skip",
+    "onbording_screen_one_next_Button" : "Next",
+    "onbording_screen_one_start_Button" : "Start",
+    "login_screen_label" : "Login",
+    "email_Text_filied_Label" : "email",
+    "password_Text_filied_Label" : "password",
+    "forget_passwrod_Button" : "Forget Password?",
+    "login_Button" : "LOGIN",
+    "create_account_Button" : "Create account?",
+    "error_messege_Email" : "Enter valid Email",
+    "error_messege_Password" : "password must consist of 8 characters and one capital Letter and number or Special character",
+    "forgert_password_Button" : "Send",
+    "forget_password_close_Button" : "Close",
+    "home_screen_label" : "Home",
+    "recomended_componant_Button" : "Read more",
+    "home_screen_top_Tab" : "Top",
+    "home_screen_popular_Tab" : "Popular",
+    "home_screen_trending_Tab" : "Trending",
+    
+    "signup_screen_label" : "Signup"
+
+}
