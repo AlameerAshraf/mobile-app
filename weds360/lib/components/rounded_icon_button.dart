@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class RoundedIconButton extends StatelessWidget {
   final Function onPressed;
   final IconData icon;
+  final Color color;
 
   const RoundedIconButton({
     @required this.icon,
     this.onPressed,
+    this.color,
   });
 
   @override
@@ -17,15 +19,19 @@ class RoundedIconButton extends StatelessWidget {
         width: 56.0,
         height: 56.0,
         decoration: BoxDecoration(
-          border: Border.all(width: 1),
+          color: color,
           shape: BoxShape.circle,
         ),
-        child: IconButton(
-          icon: Icon(
-            icon,
+        child: Center(
+          child: IconButton(
+            padding: EdgeInsets.zero,
+            color: Theme.of(context).scaffoldBackgroundColor,
+            icon: Icon(
+              icon,
+            ),
+            onPressed: onPressed,
+            iconSize: 25.0,
           ),
-          onPressed: onPressed,
-          iconSize: 15.0,
         ),
       ),
     );

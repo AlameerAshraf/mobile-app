@@ -34,6 +34,9 @@ class TextFieldCustem extends StatelessWidget {
           focusColor: Theme.of(context).accentColor,
           hoverColor: Theme.of(context).accentColor,
           errorText: errorMessege,
+          labelStyle: TextStyle(
+            fontWeight: FontWeight.w400,
+          ),
           errorMaxLines: 2,
           prefixIcon: Icon(prefexIcon),
           labelText: label,

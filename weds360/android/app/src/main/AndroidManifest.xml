@@ -10,7 +10,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="weds360"
-        android:icon="@mipmap/logoblack">
+         android:icon="@mipmap/ic_launcher">
 
         <activity
             android:name=".MainActivity"

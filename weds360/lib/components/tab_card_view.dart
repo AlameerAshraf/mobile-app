@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:weds360/core/helpers/app_localizations.dart';
+import 'package:weds360/components/cirlce_avtar_list.views.dart';
+
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:weds360/core/helpers/Constants.dart';
 
 class TabCardView extends StatelessWidget {
   final String imagePath;
@@ -20,10 +23,13 @@ class TabCardView extends StatelessWidget {
       onTap: onPressed,
       child: Card(
         margin: EdgeInsets.all(8.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
         borderOnForeground: true,
         elevation: 2.0,
         child: Container(
-          width: 334.0,
+          width: 270.0,
           height: 121.0,
           padding: EdgeInsets.all(8.0),
           child: Row(
@@ -57,7 +63,8 @@ class TabCardView extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(
+                      top: kPADDING, right: kPADDING, left: kPADDING),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -66,24 +73,47 @@ class TabCardView extends StatelessWidget {
                         title,
                         style: Theme.of(context).textTheme.headline3,
                       ),
-                      Text(
-                        description,
-                        style: Theme.of(context).textTheme.bodyText1,
-                        maxLines: 4,
+                      Expanded(
+                        child: Text(
+                          description,
+                          style: Theme.of(context).textTheme.bodyText1,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
+                        ),
                       ),
                       Align(
                         alignment: Alignment.bottomRight,
-                        child: InkWell(
-                            onTap: onPressed,
-                            child: Text(
-                              AppLocalizations.of(context)
-                                  .translate('recomended_componant_Button'),
+                        child: Column(
+                          children: [
+                            CircleAvatarListViews([
+                              'https://image.freepik.com/free-photo/cheerful-curly-business-girl-wearing-glasses_176420-206.jpg',
+                              'https://image.freepik.com/free-photo/cheerful-middle-aged-woman-with-curly-hair_1262-20859.jpg',
+                              'https://image.freepik.com/free-photo/cheerful-teenager-with-toothy-smile-afro-hairstyle-holds-modern-cell-phone-chats-online-with-boyfriend_273609-30470.jpg',
+                              'https://image.freepik.com/free-photo/close-up-young-attractive-charismatic-woman-isolated_273609-35349.jpg'
+                            ]),
+                            RatingBarIndicator(
+                              rating: 4.2,
+                              itemBuilder: (context, index) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              itemCount: 5,
+                              itemSize: 10.0,
+                              direction: Axis.horizontal,
+                            ),
+                            Text(
+                              '100+ Reviews',
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText1
-                                  .copyWith(fontWeight: FontWeight.bold),
-                            )),
-                      )
+                                  .headline3
+                                  .copyWith(
+                                    fontFamily: 'raleway',
+                                    fontSize: 10.0,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

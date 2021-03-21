@@ -1,12 +1,19 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
-import 'package:weds360/components/recomended_card_view.dart';
+import 'package:weds360/components/check_list_card_view.dart';
+import 'package:weds360/components/tab_card_view.dart';
 import 'package:weds360/core/helpers/Constants.dart';
-import 'package:weds360/core/helpers/app_localizations.dart';
+
+import 'package:weds360/pages/blog/view/blog_screen.dart';
 import 'package:weds360/pages/drawer/view/drawer_screen.dart';
+import 'package:weds360/pages/home/view/Homes_page_body.dart';
+import 'package:weds360/pages/home/view/add_checklist_item_dialog.dart';
+import 'package:weds360/pages/home/view/change_title_dialog.dart';
 import 'package:weds360/pages/home/view/home_provider.dart';
-import 'package:weds360/pages/home/view/recomended_list_view.dart';
-import 'package:weds360/pages/home/view/tabs_pager_view.dart';
+import 'package:weds360/pages/home/view/profile_section_home.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'Home';
@@ -15,29 +22,27 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  AnimationController animationController;
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  AnimationController animationController2;
   bool _canBeDraged;
   bool isIgnored = false;
-
   @override
   void initState() {
-    super.initState();
-    animationController =
+    animationController2 =
         AnimationController(vsync: this, duration: kBaseSettleDuration);
+    super.initState();
   }
 
-  void toggle() => animationController.isDismissed
-      ? animationController.forward()
-      : animationController.reverse();
-  void toggleCancel() => animationController.reverse();
+  void toggle() => animationController2.isDismissed
+      ? animationController2.forward()
+      : animationController2.reverse();
+  void toggleCancel() => animationController2.reverse();
 
   void _onDragStart(DragStartDetails details) {
     bool isDragOpenFromLeft =
-        animationController.isDismissed && details.globalPosition.dx < 10;
+        animationController2.isDismissed && details.globalPosition.dx < 10;
     bool isDragCloseFromRight =
-        animationController.isCompleted && details.globalPosition.dx > 100;
+        animationController2.isCompleted && details.globalPosition.dx > 100;
     _canBeDraged = isDragOpenFromLeft || isDragCloseFromRight;
   }
 
@@ -45,125 +50,98 @@ class _HomeScreenState extends State<HomeScreen>
     if (_canBeDraged) {
       double delta =
           details.primaryDelta / (MediaQuery.of(context).size.width / 2);
-      animationController.value += delta;
+      animationController2.value += delta;
     }
   }
 
   void _onDragEnd(DragEndDetails details) {
-    if (animationController.isDismissed || animationController.isCompleted) {
+    if (animationController2.isDismissed || animationController2.isCompleted) {
       return;
     }
     if (details.velocity.pixelsPerSecond.dx.abs() >= 365.0) {
       double visualVelocity = details.velocity.pixelsPerSecond.dx /
           MediaQuery.of(context).size.width;
-      animationController.fling(velocity: visualVelocity);
-    } else if (animationController.value < 0.5) {
-      animationController.fling(velocity: -1.0);
+      animationController2.fling(velocity: visualVelocity);
+    } else if (animationController2.value < 0.5) {
+      animationController2.fling(velocity: -1.0);
     } else {
-      animationController.fling(velocity: 1.0);
+      animationController2.fling(velocity: 1.0);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final homeData = Provider.of<HomeProvider>(context);
-
-    homeData.getList(context);
     return GestureDetector(
       onHorizontalDragStart: _onDragStart,
       onHorizontalDragUpdate: _onDragUpdate,
       onHorizontalDragEnd: _onDragEnd,
       child: AnimatedBuilder(
-        animation: animationController,
+        animation: animationController2,
         builder: (context, _) {
           double slide = (MediaQuery.of(context).size.width / 1.5) *
-              animationController.value;
-          double scale = 1 - (animationController.value * 0.2);
+              animationController2.value;
+          double scale = 1 - (animationController2.value * 0.2);
           return Stack(
             children: [
-              DrawerScreen(),
+              DrawerScreen(
+                controller: animationController2,
+              ),
               Transform(
                 transform: Matrix4.identity()
                   ..translate(slide)
                   ..scale(scale),
                 alignment: Alignment.centerLeft,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0),
+                  borderRadius: BorderRadius.circular(
+                    animationController2.value == 1 ? 15 : 0.0,
+                  ),
                   child: GestureDetector(
-                    onTap: toggleCancel,
-                    child: DefaultTabController(
-                      length: 5,
+                      onTap: toggleCancel,
                       child: Scaffold(
                         appBar: AppBar(
-                          centerTitle: true,
-                          title: Text(
-                            AppLocalizations.of(context)
-                                .translate('home_screen_label'),
-                          ),
+                          backgroundColor:
+                              Theme.of(context).scaffoldBackgroundColor,
+                          // toolbarHeight: 100.0,
+                          elevation: 0.0,
                           leading: IconButton(
-                              icon: Icon(Icons.menu), onPressed: toggle),
+                            icon: Icon(
+                              Icons.menu_rounded,
+                              color: Theme.of(context).primaryColor,
+                              size: 35.0,
+                            ),
+                            onPressed: toggle,
+                          ),
+                          actions: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  right: kPADDING, top: kPADDING),
+                              width: 35,
+                              height: 35,
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(0.0, 1.0), //(x,y)
+                                    blurRadius: 5.0,
+                                  ),
+                                ],
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/alimotie.jpg'),
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment.center),
+                              ),
+                            ),
+                          ],
                         ),
                         body: IgnorePointer(
                           ignoring:
-                              animationController.isCompleted ? true : false,
-                          child: homeData.recomendedModelList.isEmpty
-                              ? Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                )
-                              : SafeArea(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(kPADDING),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                      children: [
-                                        Text('Recommendations',
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .headline2),
-                                        RecomenededListView(),
-                                        Container(
-                                          height: 50.0,
-                                          child: TabBar(
-                                              labelColor: Theme.of(context)
-                                                  .primaryColor,
-                                              unselectedLabelColor: Colors.grey,
-                                              indicatorColor:
-                                                  Colors.transparent,
-                                              isScrollable: true,
-                                              tabs: [
-                                                Tab(text: "Top"),
-                                                Tab(text: "Popular"),
-                                                Tab(text: "Trending"),
-                                                Tab(text: "pupelur"),
-                                                Tab(text: "pupelur"),
-                                              ]),
-                                        ),
-                                        Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height /
-                                              2,
-                                          child: TabBarView(children: [
-                                            TabsPagerView(),
-                                            TabsPagerView(),
-                                            TabsPagerView(),
-                                            TabsPagerView(),
-                                            TabsPagerView(),
-                                          ]),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                              animationController2.isCompleted ? true : false,
+                          child: homeData.currentPage(),
                         ),
-                      ),
-                    ),
-                  ),
+                      )),
                 ),
               ),
             ],
@@ -171,5 +149,11 @@ class _HomeScreenState extends State<HomeScreen>
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    animationController2.dispose();
+    super.dispose();
   }
 }
