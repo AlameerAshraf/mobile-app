@@ -100,7 +100,7 @@ class HeaderBlogView extends StatelessWidget {
                                         .headline3
                                         .copyWith(
                                           fontFamily: 'raleway',
-                                          fontSize: 20.0,
+                                          fontSize: 15.0,
                                         ),
                                   ),
                                 ],

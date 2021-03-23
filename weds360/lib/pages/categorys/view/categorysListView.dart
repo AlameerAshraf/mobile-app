@@ -33,8 +33,13 @@ class CategorysListView extends StatelessWidget {
                     imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(ROUNDED),
+                        color: Colors.black,
                         image: DecorationImage(
-                            image: imageProvider, fit: BoxFit.cover),
+                            colorFilter: ColorFilter.mode(
+                                Colors.black.withOpacity(0.3),
+                                BlendMode.dstATop),
+                            image: imageProvider,
+                            fit: BoxFit.cover),
                       ),
                     ),
                     fit: BoxFit.cover,

@@ -16,8 +16,8 @@ class RoundedIconButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 56.0,
-        height: 56.0,
+        // width: 56.0,
+        // height: 56.0,
         decoration: BoxDecoration(
           color: color,
           shape: BoxShape.circle,
