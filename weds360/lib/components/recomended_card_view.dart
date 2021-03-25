@@ -27,7 +27,7 @@ class _RecomendedCardViewState extends State<RecomendedCardView> {
       child: Card(
         borderOnForeground: false,
         child: Container(
-          width: 180.0,
+          width: MediaQuery.of(context).size.width / 2.5,
           height: 230.0,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,12 +62,15 @@ class _RecomendedCardViewState extends State<RecomendedCardView> {
                   style: Theme.of(context).textTheme.headline3,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Text(
-                  widget.description,
-                  style: Theme.of(context).textTheme.bodyText1,
-                  maxLines: 3,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                  child: Text(
+                    widget.description,
+                    style: Theme.of(context).textTheme.overline,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 4,
+                  ),
                 ),
               ),
               Align(

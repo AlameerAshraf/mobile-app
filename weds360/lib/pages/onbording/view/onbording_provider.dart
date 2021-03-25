@@ -37,17 +37,7 @@ class OnBordingProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void next() {
-    if (_selected < 2) {
-      _selected++;
-      heaght = 0.0;
-      Timer(Duration(milliseconds: 300), () {
-        _imagePath();
-      });
 
-      notifyListeners();
-    } else {}
-  }
 
   void start(BuildContext context) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -56,7 +46,4 @@ class OnBordingProvider extends ChangeNotifier {
     Navigator.popAndPushNamed(context, LoginScreen.id);
   }
 
-  void skip(BuildContext context) {
-    Navigator.popAndPushNamed(context, LoginScreen.id);
-  }
 }

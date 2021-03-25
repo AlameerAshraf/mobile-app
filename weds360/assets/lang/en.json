@@ -1,5 +1,5 @@
 {   
-    "onbording_screen_one_label" : "Create your website",
+    "onbording_screen_one_label" : "Create \nyour website",
     "onbording_screen_one_Descreption" : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
     "onbording_screen_one_skip_Button" : "Skip",
     "onbording_screen_one_next_Button" : "Next",
@@ -9,7 +9,8 @@
     "password_Text_filied_Label" : "password",
     "forget_passwrod_Button" : "Forget Password?",
     "login_Button" : "LOGIN",
-    "create_account_Button" : "Create account?",
+    "create_account_Button" : "Sign up?",
+    "Dont_have_an_account" : "Don't have an account?",
     "error_messege_Email" : "Enter valid Email",
     "error_messege_Password" : "password must consist of 8 characters and one capital Letter and number or Special character",
     "forgert_password_Button" : "Send",
@@ -19,7 +20,9 @@
     "home_screen_top_Tab" : "Top",
     "home_screen_popular_Tab" : "Popular",
     "home_screen_trending_Tab" : "Trending",
-    
+    "drawer_counter_label" : "Until the Perfect moment",
+    "blog_screen_label" : "Blog",
+    "home_screen_checklist_title" : "Hi Ali, Start planning for your wedding 🎁",
     "signup_screen_label" : "Signup"
 
 }

@@ -9,7 +9,8 @@
     "password_Text_filied_Label" : "كلمه السر",
     "forget_passwrod_Button" : "نسيت كلمة المرور؟",
     "login_Button" : "تسجيل الدخول",
-    "create_account_Button" : "إنشاء حساب؟",
+    "create_account_Button" : "اشتراك؟",
+    "Dont_have_an_account" : "ليس لديك حساب؟",
     "error_messege_Email" : "أدخل بريد إلكتروني صالح",
     "error_messege_Password" : "يجب أن تتكون كلمة المرور من 8 أحرف وحرف كبير واحد ورقم أو حرف خاص",
     "forgert_password_Button" : "إرسال",
@@ -19,6 +20,9 @@
     "home_screen_top_Tab" : "الأفضل",
     "home_screen_popular_Tab" : "شائع",
     "home_screen_trending_Tab" : "منتشر",
+    "drawer_counter_label" : "حتى اللحظة المثالية",
+    "blog_screen_label" : "مقالات",
+    "home_screen_checklist_title" : "مرحباً علي ، ابدأ التخطيط لحفل زفافك 🎁",
     "signup_screen_label" : "إنشاء حساب"
 
 }
