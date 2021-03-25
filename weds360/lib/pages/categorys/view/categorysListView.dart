@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/pages/categorys/models/categorys_model.dart';
 import 'package:weds360/pages/categorys/view/categorys_provider.dart';
@@ -33,8 +34,13 @@ class CategorysListView extends StatelessWidget {
                     imageBuilder: (context, imageProvider) => Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(ROUNDED),
+                        color: Colors.black,
                         image: DecorationImage(
-                            image: imageProvider, fit: BoxFit.cover),
+                            colorFilter: ColorFilter.mode(
+                                Colors.black.withOpacity(0.3),
+                                BlendMode.dstATop),
+                            image: imageProvider,
+                            fit: BoxFit.cover),
                       ),
                     ),
                     fit: BoxFit.cover,
@@ -52,18 +58,28 @@ class CategorysListView extends StatelessWidget {
                     errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                   Center(
-                    child: Text(
-                      categorys[index].title,
-                      style: Theme.of(context).textTheme.headline1.copyWith(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 10.0,
-                            color: Theme.of(context).accentColor,
-                            offset: Offset(5.0, 5.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          categorys[index].icon,
+                          size: 40.0,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                        Text(
+                          categorys[index].title,
+                          style: Theme.of(context).textTheme.headline1.copyWith(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 10.0,
+                                color: Theme.of(context).accentColor,
+                                offset: Offset(5.0, 5.0),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   )
                 ],

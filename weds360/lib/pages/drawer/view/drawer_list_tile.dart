@@ -16,8 +16,9 @@ class DrawerListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 10.0,
-      height: 60.0,
-      margin: EdgeInsets.only(right: 170.0),
+      // height: 60.0,
+      margin:
+          EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.3 + 10),
       decoration: BoxDecoration(
         color: isSelceted
             ? Theme.of(context).scaffoldBackgroundColor
@@ -33,7 +34,7 @@ class DrawerListTile extends StatelessWidget {
           color: isSelceted
               ? Theme.of(context).primaryColor
               : Theme.of(context).scaffoldBackgroundColor,
-          size: 30.0,
+          size: 25.0,
         ),
         title: Text(
           title,

@@ -22,11 +22,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 25,
-                ),
+                // SizedBox(
+                //   height: MediaQuery.of(context).size.height / 25,
+                // ),
                 Text(
                   AppLocalizations.of(context).translate('signup_screen_label'),
                   style: Theme.of(context).textTheme.headline1.copyWith(
@@ -43,9 +43,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         color: Theme.of(context).accentColor.withOpacity(0.6),
                       ),
                 ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 25,
-                ),
+                // SizedBox(
+                //   height: MediaQuery.of(context).size.height / 25,
+                // ),
                 TextFieldCustem(
                   label: 'Name',
                   prefexIcon: Icons.person,
@@ -74,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   obscureText: true,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: kPADDING * 2),
+                  padding: const EdgeInsets.only(top: kPADDING),
                   child: RaisedButtonCustem(
                     title: 'Signup',
                     onPressed: () {

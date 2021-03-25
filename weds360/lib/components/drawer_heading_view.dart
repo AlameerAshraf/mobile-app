@@ -16,8 +16,8 @@ class DrawerHeadingView extends StatelessWidget {
       children: [
         Container(
           margin: EdgeInsets.only(right: kPADDING, top: kPADDING),
-          width: 60,
-          height: 60,
+          width: MediaQuery.of(context).size.width * 0.15,
+          height: MediaQuery.of(context).size.width * 0.15,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
@@ -35,7 +35,7 @@ class DrawerHeadingView extends StatelessWidget {
           children: [
             Text(
               name,
-              style: Theme.of(context).textTheme.headline1.copyWith(
+              style: Theme.of(context).textTheme.headline2.copyWith(
                     color: Theme.of(context).scaffoldBackgroundColor,
                   ),
             ),

@@ -35,25 +35,22 @@ class _DrawerScreenState extends State<DrawerScreen> {
             child: ListView(
               children: [
                 SizedBox(
-                  height: 50.0,
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: kPADDING * 2 + 5),
-                  child: DrawerHeadingView(
-                    email: 'amotie@outlook.com',
-                    name: 'Ali & Nada',
-                  ),
+                DrawerHeadingView(
+                  email: 'amotie@outlook.com',
+                  name: 'Ali & Nada',
                 ),
                 SizedBox(
                   height: kPADDING,
                 ),
                 Divider(
                   color: Theme.of(context).scaffoldBackgroundColor,
-                  indent: 30.0,
+                  indent: 15.0,
                   endIndent: 160.0,
                 ),
                 SizedBox(
-                  height: 50.0,
+                  height: kPADDING,
                 ),
                 DrawerListTile(
                   icon: Icons.home_rounded,
@@ -67,9 +64,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     });
                   },
                 ),
-                SizedBox(
-                  height: kPADDING,
-                ),
+                // SizedBox(
+                //   height: kPADDING,
+                // ),
                 DrawerListTile(
                   icon: Icons.person,
                   title: 'Profile',
@@ -82,9 +79,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     });
                   },
                 ),
-                SizedBox(
-                  height: kPADDING,
-                ),
+                // SizedBox(
+                //   height: kPADDING,
+                // ),
                 DrawerListTile(
                   icon: FontAwesomeIcons.blogger,
                   title: 'Blogs',
@@ -98,9 +95,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     });
                   },
                 ),
-                SizedBox(
-                  height: kPADDING,
-                ),
+                // SizedBox(
+                //   height: kPADDING,
+                // ),
                 DrawerListTile(
                   icon: Icons.settings,
                   title: 'Settings',
@@ -113,9 +110,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     });
                   },
                 ),
-                SizedBox(
-                  height: kPADDING,
-                ),
+                // SizedBox(
+                //   height: kPADDING,
+                // ),
                 DrawerListTile(
                   icon: Icons.category_outlined,
                   title: 'Categorys',
@@ -128,9 +125,9 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     });
                   },
                 ),
-                SizedBox(
-                  height: kPADDING,
-                ),
+                // SizedBox(
+                //   height: kPADDING,
+                // ),
                 DrawerListTile(
                   icon: Icons.message,
                   title: 'Messeges',
@@ -143,23 +140,23 @@ class _DrawerScreenState extends State<DrawerScreen> {
                     });
                   },
                 ),
-                SizedBox(
-                  height: kPADDING,
-                ),
-                InkWell(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: kPADDING * 2 + 5),
+                // SizedBox(
+                //   height: kPADDING,
+                // ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0 + 2),
+                  child: InkWell(
                     child: Text(
                       'Logout',
-                      style: Theme.of(context).textTheme.headline1.copyWith(
+                      style: Theme.of(context).textTheme.headline2.copyWith(
                             color: Theme.of(context).scaffoldBackgroundColor,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
+                    onTap: () {
+                      Navigator.popAndPushNamed(context, LoginScreen.id);
+                    },
                   ),
-                  onTap: () {
-                    Navigator.popAndPushNamed(context, LoginScreen.id);
-                  },
                 )
               ],
             )),
