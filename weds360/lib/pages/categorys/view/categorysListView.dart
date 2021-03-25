@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/pages/categorys/models/categorys_model.dart';
 import 'package:weds360/pages/categorys/view/categorys_provider.dart';
@@ -57,18 +58,28 @@ class CategorysListView extends StatelessWidget {
                     errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                   Center(
-                    child: Text(
-                      categorys[index].title,
-                      style: Theme.of(context).textTheme.headline1.copyWith(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 10.0,
-                            color: Theme.of(context).accentColor,
-                            offset: Offset(5.0, 5.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          categorys[index].icon,
+                          size: 40.0,
+                          color: Theme.of(context).scaffoldBackgroundColor,
+                        ),
+                        Text(
+                          categorys[index].title,
+                          style: Theme.of(context).textTheme.headline1.copyWith(
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 10.0,
+                                color: Theme.of(context).accentColor,
+                                offset: Offset(5.0, 5.0),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   )
                 ],
