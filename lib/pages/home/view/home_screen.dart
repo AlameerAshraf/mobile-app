@@ -1,19 +1,15 @@
-import 'dart:async';
+
 
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
-import 'package:weds360/components/check_list_card_view.dart';
-import 'package:weds360/components/tab_card_view.dart';
+
 import 'package:weds360/core/helpers/Constants.dart';
 
-import 'package:weds360/pages/blog/view/blog_screen.dart';
 import 'package:weds360/pages/drawer/view/drawer_screen.dart';
-import 'package:weds360/pages/home/view/Homes_page_body.dart';
-import 'package:weds360/pages/home/view/add_checklist_item_dialog.dart';
-import 'package:weds360/pages/home/view/change_title_dialog.dart';
+
 import 'package:weds360/pages/home/view/home_provider.dart';
-import 'package:weds360/pages/home/view/profile_section_home.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'Home';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weds360/components/tab_card_view.dart';
+
 import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/pages/blog/view/blog_list_view.dart';
 
