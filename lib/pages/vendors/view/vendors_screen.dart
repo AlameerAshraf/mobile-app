@@ -9,6 +9,7 @@ import 'package:weds360/pages/blog/view/search_hestroy.dart';
 import 'package:weds360/pages/categorys/view/categorys_provider.dart';
 import 'package:weds360/pages/vendors/view/carsual_baner_view.dart';
 import 'package:weds360/pages/vendors/view/featured_vendors_view.dart';
+import 'package:weds360/pages/vendors/view/filtter_sheet_view.dart';
 import 'package:weds360/pages/vendors/view/header_change_category_view.dart';
 import 'package:weds360/pages/vendors/view/vendors_listView.dart';
 import 'package:weds360/pages/vendors/view/vendors_provider.dart';
@@ -58,7 +59,15 @@ class _VendorsScreenState extends State<VendorsScreen> {
             ),
             IconButton(
               icon: Icon(Icons.filter_list_rounded),
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(ROUNDED),
+                    ),
+                    elevation: 5.0,
+                    builder: (context) => FiltersheetView());
+              },
             ),
           ],
           builder: (context, transition) {

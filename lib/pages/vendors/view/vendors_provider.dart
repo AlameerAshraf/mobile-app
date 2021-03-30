@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:weds360/pages/vendors/models/location_filter_chip_model.dart';
 import 'package:weds360/pages/vendors/models/vendorModel.dart';
 
 class VendorsProvuder extends ChangeNotifier {
@@ -90,7 +91,21 @@ class VendorsProvuder extends ChangeNotifier {
     'https://image.freepik.com/free-photo/amazed-shocked-afro-woman-shows-good-sale-offer-deal-holds-breath-demonstrates-empty-copy-space-isolated-blue-background_273609-34443.jpg',
     'https://image.freepik.com/free-photo/young-caucasian-woman-isolated-blue-background-impressed-holding-copy-space-palm_1187-120139.jpg',
   ];
+  List<LocationFiltterChipModel> locationList = [
+    LocationFiltterChipModel(label: 'nasr city', isSelcted: false),
+    LocationFiltterChipModel(label: '6 October', isSelcted: false),
+    LocationFiltterChipModel(label: 'Masr elGededa', isSelcted: false),
+    LocationFiltterChipModel(label: ' 5th Settlement', isSelcted: false),
+    LocationFiltterChipModel(label: ' Maadi', isSelcted: false),
+  ];
+
   int activeimageSlider = 0;
+  void onLocationChipChange(LocationFiltterChipModel model) {
+    int index = locationList.indexOf(model);
+    locationList[index].isSelcted = !locationList[index].isSelcted;
+    notifyListeners();
+  }
+
   void onSliderpageChange(int index) {
     activeimageSlider = index;
     notifyListeners();
