@@ -3,7 +3,7 @@ import 'package:weds360/components/raised_button_costem.dart';
 import 'package:weds360/components/text_field_custem.dart';
 import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/core/helpers/app_localizations.dart';
-import 'package:weds360/pages/login/view/login_screen.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   static const String id = 'Signup';
