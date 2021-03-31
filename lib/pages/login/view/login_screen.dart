@@ -125,8 +125,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     RoundedIconButton(
                       color: Platform.isAndroid
-                          ? Color(0xFFDB4437)
-                          : Color(0xFF555555),
+                          ? GOOGLECOLOR
+                          : APPLECOLOR,
                       icon: Platform.isAndroid
                           ? FontAwesomeIcons.google
                           : FontAwesomeIcons.apple,
@@ -136,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     RoundedIconButton(
                       icon: FontAwesomeIcons.twitter,
-                      color: Color(0xFF1DA1F2),
+                      color: FACEBOOKCOLOR,
                       onPressed: () {
                         loginData.loginWithGoogle(context);
                       },
