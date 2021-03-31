@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weds360/core/helpers/Constants.dart';
+import 'package:weds360/pages/single_vendor/view/single_vendor_screen.dart';
 import 'package:weds360/pages/vendors/view/featured_vendors_list_item.dart';
 import 'package:weds360/pages/vendors/view/vendors_provider.dart';
 
@@ -24,14 +25,19 @@ class FeaturedVendorsView extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: value.vendorsList.length,
                   itemBuilder: (context, index) {
-                    return FeaturedVendorsListItem(
-                      imagePath: value.vendorsList[index].imagePath,
-                      isFavorite: value.vendorsList[index].isFavorite,
-                      title: value.vendorsList[index].title,
-                      rate: value.vendorsList[index].rate,
-                      favoriteOnPressed: () {
-                        value.onFavoriteClick(index);
+                    return InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, SingleVendorScreen.id);
                       },
+                      child: FeaturedVendorsListItem(
+                        imagePath: value.vendorsList[index].imagePath,
+                        isFavorite: value.vendorsList[index].isFavorite,
+                        title: value.vendorsList[index].title,
+                        rate: value.vendorsList[index].rate,
+                        favoriteOnPressed: () {
+                          value.onFavoriteClick(index);
+                        },
+                      ),
                     );
                   }),
             ),
