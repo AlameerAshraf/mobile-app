@@ -32,8 +32,7 @@ class _VendorsScreenState extends State<VendorsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final categoryData = Provider.of<CategorysProvider>(context);
-    final vendorData = Provider.of<VendorsProvuder>(context);
+    
 
     return Scaffold(
       body: SafeArea(
