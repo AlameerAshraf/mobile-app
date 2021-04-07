@@ -17,21 +17,21 @@ class EnterYourBudget extends StatelessWidget {
             content: TextFieldCustem(
                 label: 'Budget',
                 prefexIcon: Icons.check_box_outlined,
-                keyboardType: TextInputType.text,
+                keyboardType: TextInputType.number,
                 onChanged: (value) {
                   print(value);
 
-                  data.newBudget = value;
+                  data.onChangeBudget(value);
                 },
                 errorMessege: data.isValide ? null : 'enter Budget',
-                onSubmitted: (value) {
-                  data.onChangeBudget(value);
+                onSubmitted: (_) {
+                  data.onSubmetBudget();
                   Navigator.of(context, rootNavigator: true).pop();
                 }),
             actions: [
               FlatButton(
                 onPressed: () {
-                  data.onChangeBudget(data.newBudget);
+                  data.onSubmetBudget();
                   Navigator.of(context, rootNavigator: true).pop();
                 },
                 child: Text(

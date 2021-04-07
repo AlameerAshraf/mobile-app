@@ -22,6 +22,7 @@ import 'package:weds360/pages/messeges/view/messeges_screen.dart';
 
 import 'package:weds360/pages/onbording/view/onbording_screen.dart';
 import 'package:weds360/pages/profile/view/profile_screen.dart';
+import 'package:weds360/pages/registry/view/registry_screen.dart';
 import 'package:weds360/pages/settings/view/settings_screen.dart';
 import 'package:weds360/pages/signup/view/signup_screen.dart';
 import 'package:weds360/pages/single_blog/view/single_blog_provider.dart';
@@ -178,6 +179,7 @@ class MyApp extends StatelessWidget {
           SingleVendorScreen.id: (context) => SingleVendorScreen(),
           SingleBlogScreen.id: (context) => SingleBlogScreen(),
           BudgeterScren.id: (context) => BudgeterScren(),
+          RegistryScreen.id: (context) => RegistryScreen(),
         },
       ),
     );

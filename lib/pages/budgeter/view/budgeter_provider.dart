@@ -4,10 +4,9 @@ import 'package:weds360/pages/budgeter/models/budget_item.dart';
 import 'package:weds360/pages/home/view/home_provider.dart';
 
 class BudgeterProvider extends ChangeNotifier {
-  int _budget = 5000;
+  int budget;
   int newBudget;
   bool isValide = true;
-  int get budget => _budget;
 
   List<BudgetItem> budgetItems = [
     BudgetItem(
@@ -57,11 +56,20 @@ class BudgeterProvider extends ChangeNotifier {
     'ijinio',
   ];
   String selctedVendor;
-  void onChangeBudget(int value) {
-    newBudget = null;
-    _budget = value;
+  void onChangeBudget(String value) {
+    newBudget = int.parse(value);
 
     notifyListeners();
+  }
+
+  void onSubmetBudget() {
+    if (newBudget == null) {
+      print('NO');
+    } else {
+      budget = newBudget;
+
+      notifyListeners();
+    }
   }
 
   void onSelctedVendor(String vendor) {
@@ -80,7 +88,8 @@ class BudgeterProvider extends ChangeNotifier {
       totalSpent += item.spent;
     }
 
-    home.budgeterPersintege(totalSpent / _budget);
+    home.budgeterPersintege(totalSpent / budget);
+    notifyListeners();
   }
 
   void onSubmetedbudget(BudgetItem budgetItem, double spent) {

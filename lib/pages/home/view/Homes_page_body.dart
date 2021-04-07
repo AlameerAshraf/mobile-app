@@ -10,6 +10,7 @@ import 'package:weds360/pages/home/view/add_checklist_item_dialog.dart';
 import 'package:weds360/pages/home/view/change_title_dialog.dart';
 import 'package:weds360/pages/home/view/home_provider.dart';
 import 'package:weds360/pages/home/view/profile_section_home.dart';
+import 'package:weds360/pages/registry/view/registry_screen.dart';
 
 class HomePageBody extends StatefulWidget {
   @override
@@ -110,6 +111,7 @@ class _HomePageBodyState extends State<HomePageBody>
                               description: home.planner[index].description,
                               onPressed: () {
                                 if (index == home.planner.length - 1) {
+                                  // CheckList
                                   showModalBottomSheet(
                                       // isScrollControlled:
                                       //     true,
@@ -124,7 +126,7 @@ class _HomePageBodyState extends State<HomePageBody>
                                         return checkList(index);
                                       });
                                 } else if (index == 0) {
-                                  // CheckList
+                                  // GuestList
 
                                 } else if (index == 1) {
                                   // Wedding Webstie
@@ -135,6 +137,8 @@ class _HomePageBodyState extends State<HomePageBody>
                                       context, BudgeterScren.id);
                                 } else if (index == 3) {
                                   // Regestry
+                                  Navigator.pushNamed(
+                                      context, RegistryScreen.id);
                                 }
                               }),
                         );
