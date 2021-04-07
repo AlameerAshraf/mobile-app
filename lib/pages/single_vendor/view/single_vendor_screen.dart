@@ -1,12 +1,7 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_brand_icons/flutter_brand_icons.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:weds360/components/raised_button_costem.dart';
-import 'package:weds360/core/helpers/Constants.dart';
+
 import 'package:weds360/pages/single_vendor/view/review_item.dart';
 import 'package:weds360/pages/single_vendor/view/single_vendor_provider.dart';
 import 'package:weds360/pages/single_vendor/view/sliverAppbarimages.dart';
@@ -46,18 +41,21 @@ class _SingleVendorScreenState extends State<SingleVendorScreen> {
         ),
         floatingActionButton: SpeedDial(
           icon: Icons.call,
+          foregroundColor: Theme.of(context).scaffoldBackgroundColor,
           backgroundColor: Theme.of(context).primaryColor,
           activeIcon: Icons.remove,
           children: [
             SpeedDialChild(
-              child: Icon(Icons.call),
+              child: Icon(Icons.call,
+                  color: Theme.of(context).scaffoldBackgroundColor),
               backgroundColor: Theme.of(context).accentColor,
               onTap: () {
                 data.launchURL('tel:' + data.singleVendrorModel.phone);
               },
             ),
             SpeedDialChild(
-              child: Icon(Icons.message),
+              child: Icon(Icons.message,
+                  color: Theme.of(context).scaffoldBackgroundColor),
               onTap: () {},
               backgroundColor: Theme.of(context).accentColor,
             ),

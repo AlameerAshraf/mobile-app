@@ -6,6 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weds360/core/helpers/app_localizations.dart';
 import 'package:weds360/pages/blog/view/blog_screen.dart';
 import 'package:weds360/pages/blog/view/blog_provider.dart';
+import 'package:weds360/pages/budgeter/view/budgeter_provider.dart';
+import 'package:weds360/pages/budgeter/view/budgeter_screen.dart';
 import 'package:weds360/pages/categorys/view/categorys_provider.dart';
 
 import 'package:weds360/pages/categorys/view/categorys_screen.dart';
@@ -22,6 +24,8 @@ import 'package:weds360/pages/onbording/view/onbording_screen.dart';
 import 'package:weds360/pages/profile/view/profile_screen.dart';
 import 'package:weds360/pages/settings/view/settings_screen.dart';
 import 'package:weds360/pages/signup/view/signup_screen.dart';
+import 'package:weds360/pages/single_blog/view/single_blog_provider.dart';
+import 'package:weds360/pages/single_blog/view/single_blog_screen.dart';
 import 'package:weds360/pages/single_vendor/view/single_vendor_provider.dart';
 import 'package:weds360/pages/single_vendor/view/single_vendor_screen.dart';
 import 'package:weds360/pages/vendors/view/vendors_provider.dart';
@@ -67,6 +71,12 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => SingleVendorProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SingleBlogProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BudgeterProvider(),
         ),
       ],
       child: MaterialApp(
@@ -166,6 +176,8 @@ class MyApp extends StatelessWidget {
           MessegesScreen.id: (context) => MessegesScreen(),
           VendorsScreen.id: (context) => VendorsScreen(),
           SingleVendorScreen.id: (context) => SingleVendorScreen(),
+          SingleBlogScreen.id: (context) => SingleBlogScreen(),
+          BudgeterScren.id: (context) => BudgeterScren(),
         },
       ),
     );

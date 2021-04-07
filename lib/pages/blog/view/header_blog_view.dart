@@ -1,13 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:weds360/components/cirlce_avtar_list.views.dart';
 import 'package:weds360/core/helpers/Constants.dart';
+import 'package:weds360/pages/single_blog/view/single_blog_screen.dart';
 
 class HeaderBlogView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, SingleBlogScreen.id);
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(ROUNDED),
@@ -20,18 +24,34 @@ class HeaderBlogView extends StatelessWidget {
               child: Column(
                 children: [
                   Expanded(
-                      flex: 7,
-                      child: Container(
-                        margin: EdgeInsets.all(kPADDING),
+                    flex: 7,
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          'https://image.freepik.com/free-photo/elegant-wedding-couple_1157-18560.jpg',
+                      fit: BoxFit.cover,
+                      imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(ROUNDED),
                           image: DecorationImage(
-                              image: NetworkImage(
-                                  'https://image.freepik.com/free-photo/elegant-wedding-couple_1157-18560.jpg'),
-                              fit: BoxFit.cover,
-                              alignment: Alignment.center),
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      )),
+                      ),
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Center(
+                        child: Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                                value: downloadProgress.progress),
+                          ),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                  ),
                   Expanded(
                     flex: 3,
                     child: Container(

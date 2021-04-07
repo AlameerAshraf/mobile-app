@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:weds360/pages/blog/view/blog_screen.dart';
 import 'package:weds360/pages/categorys/view/categorys_screen.dart';
 import 'package:weds360/pages/home/models/checklist_model.dart';
@@ -123,5 +125,19 @@ class HomeProvider extends ChangeNotifier {
       default:
         return HomeScreen();
     }
+  }
+
+  void launchURL(String url) async {
+    await canLaunch(url)
+        ? await launch(
+            url,
+            universalLinksOnly: true,
+          )
+        : throw 'Could not launch $url';
+  }
+
+  void budgeterPersintege(double percent) {
+    planner[2].percent = percent;
+    notifyListeners();
   }
 }
