@@ -8,6 +8,7 @@ class TextFieldCustem extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final String errorMessege;
+  final String value;
 
   TextFieldCustem({
     @required this.label,
@@ -17,16 +18,18 @@ class TextFieldCustem extends StatelessWidget {
     this.keyboardType,
     this.obscureText,
     this.errorMessege,
+    this.value,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      initialValue: value,
       cursorColor: Theme.of(context).accentColor,
       keyboardType: keyboardType,
       textInputAction: TextInputAction.next,
       onChanged: onChanged,
-      onSubmitted: onSubmitted,
+      onFieldSubmitted: onSubmitted,
       obscureText: obscureText != null ? obscureText : false,
       decoration: InputDecoration(
         focusColor: Theme.of(context).accentColor,

@@ -22,6 +22,7 @@ import 'package:weds360/pages/messeges/view/messeges_screen.dart';
 
 import 'package:weds360/pages/onbording/view/onbording_screen.dart';
 import 'package:weds360/pages/profile/view/profile_screen.dart';
+import 'package:weds360/pages/registry/view/registry_provider.dart';
 import 'package:weds360/pages/registry/view/registry_screen.dart';
 import 'package:weds360/pages/settings/view/settings_screen.dart';
 import 'package:weds360/pages/signup/view/signup_screen.dart';
@@ -78,6 +79,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => BudgeterProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => RegistryProvider(),
         ),
       ],
       child: MaterialApp(
