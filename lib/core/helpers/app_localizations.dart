@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
 class AppLocalizations {
   final Locale locale;
@@ -36,8 +37,6 @@ class AppLocalizations {
   String translate(String key) {
     return _localizedStrings[key];
   }
-
-  
 }
 
 class _AppLocalizationsDelegate

@@ -12,7 +12,6 @@ import 'package:weds360/pages/home/view/home_screen.dart';
 import 'package:weds360/pages/login/view/login_screen.dart';
 import 'package:weds360/pages/messeges/view/messeges_screen.dart';
 import 'package:weds360/pages/profile/view/profile_screen.dart';
-import 'package:weds360/pages/settings/view/settings_screen.dart';
 
 class DrawerScreen extends StatefulWidget {
   static const String id = 'Drawer';
@@ -98,18 +97,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 // SizedBox(
                 //   height: kPADDING,
                 // ),
-                DrawerListTile(
-                  icon: Icons.settings,
-                  title: 'Settings',
-                  isSelceted: isSelcted == SettingsScreen.id ? true : false,
-                  onPressed: () {
-                    setState(() {
-                      widget.controller.reverse();
-                      isSelcted = SettingsScreen.id;
-                      homeData.changePage(isSelcted);
-                    });
-                  },
-                ),
+
                 // SizedBox(
                 //   height: kPADDING,
                 // ),

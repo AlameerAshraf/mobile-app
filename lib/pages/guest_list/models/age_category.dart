@@ -1,0 +1,4 @@
+enum AgeCategory {
+  OLD,
+  YOUNG,
+}

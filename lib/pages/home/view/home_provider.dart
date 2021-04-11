@@ -9,7 +9,6 @@ import 'package:weds360/pages/home/view/Homes_page_body.dart';
 import 'package:weds360/pages/home/view/home_screen.dart';
 import 'package:weds360/pages/messeges/view/messeges_screen.dart';
 import 'package:weds360/pages/profile/view/profile_screen.dart';
-import 'package:weds360/pages/settings/view/settings_screen.dart';
 
 class HomeProvider extends ChangeNotifier {
   List<PlanerModel> planner = [
@@ -112,9 +111,7 @@ class HomeProvider extends ChangeNotifier {
       case BlogScreen.id:
         return BlogScreen();
         break;
-      case SettingsScreen.id:
-        return SettingsScreen();
-        break;
+
       case CategorysScreen.id:
         return CategorysScreen();
         break;

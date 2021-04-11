@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weds360/core/helpers/app_localizations.dart';
@@ -12,6 +12,8 @@ import 'package:weds360/pages/categorys/view/categorys_provider.dart';
 
 import 'package:weds360/pages/categorys/view/categorys_screen.dart';
 import 'package:weds360/pages/drawer/view/drawer_screen.dart';
+import 'package:weds360/pages/guest_list/view/guest_list_provider.dart';
+import 'package:weds360/pages/guest_list/view/guest_list_screen.dart';
 import 'package:weds360/pages/home/view/home_provider.dart';
 
 import 'package:weds360/pages/home/view/home_screen.dart';
@@ -24,7 +26,7 @@ import 'package:weds360/pages/onbording/view/onbording_screen.dart';
 import 'package:weds360/pages/profile/view/profile_screen.dart';
 import 'package:weds360/pages/registry/view/registry_provider.dart';
 import 'package:weds360/pages/registry/view/registry_screen.dart';
-import 'package:weds360/pages/settings/view/settings_screen.dart';
+
 import 'package:weds360/pages/signup/view/signup_screen.dart';
 import 'package:weds360/pages/single_blog/view/single_blog_provider.dart';
 import 'package:weds360/pages/single_blog/view/single_blog_screen.dart';
@@ -32,7 +34,7 @@ import 'package:weds360/pages/single_vendor/view/single_vendor_provider.dart';
 import 'package:weds360/pages/single_vendor/view/single_vendor_screen.dart';
 import 'package:weds360/pages/vendors/view/vendors_provider.dart';
 import 'package:weds360/pages/vendors/view/vendors_screen.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'core/helpers/Constants.dart';
 
 void main() async {
@@ -82,6 +84,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => RegistryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => GuestListProvider(),
         ),
       ],
       child: MaterialApp(
@@ -176,7 +181,6 @@ class MyApp extends StatelessWidget {
           DrawerScreen.id: (context) => DrawerScreen(),
           BlogScreen.id: (context) => BlogScreen(),
           ProfileScreen.id: (context) => ProfileScreen(),
-          SettingsScreen.id: (context) => SettingsScreen(),
           CategorysScreen.id: (context) => CategorysScreen(),
           MessegesScreen.id: (context) => MessegesScreen(),
           VendorsScreen.id: (context) => VendorsScreen(),
@@ -184,6 +188,7 @@ class MyApp extends StatelessWidget {
           SingleBlogScreen.id: (context) => SingleBlogScreen(),
           BudgeterScren.id: (context) => BudgeterScren(),
           RegistryScreen.id: (context) => RegistryScreen(),
+          GuestListScreen.id: (context) => GuestListScreen(),
         },
       ),
     );

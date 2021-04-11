@@ -6,6 +6,7 @@ import 'package:weds360/components/check_list_card_view.dart';
 import 'package:weds360/components/tab_card_view.dart';
 import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/pages/budgeter/view/budgeter_screen.dart';
+import 'package:weds360/pages/guest_list/view/guest_list_screen.dart';
 import 'package:weds360/pages/home/view/add_checklist_item_dialog.dart';
 import 'package:weds360/pages/home/view/change_title_dialog.dart';
 import 'package:weds360/pages/home/view/home_provider.dart';
@@ -127,7 +128,8 @@ class _HomePageBodyState extends State<HomePageBody>
                                       });
                                 } else if (index == 0) {
                                   // GuestList
-
+                                  Navigator.pushNamed(
+                                      context, GuestListScreen.id);
                                 } else if (index == 1) {
                                   // Wedding Webstie
                                   home.launchURL('https://www.google.com/');
