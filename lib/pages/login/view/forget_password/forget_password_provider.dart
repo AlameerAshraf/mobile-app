@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:weds360/core/helpers/Validation.dart';
 
 class ForgetPasswordProvider extends ChangeNotifier {
   String _email;
@@ -10,17 +11,7 @@ class ForgetPasswordProvider extends ChangeNotifier {
   }
 
   void emailValidation(String value) {
-    if (value != null) {
-      if (RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(value)) {
-        _isEmailValid = true;
-      } else {
-        _isEmailValid = false;
-      }
-    } else {
-      _isEmailValid = false;
-    }
+    _isEmailValid = Validation.emailValidation(value);
     notifyListeners();
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:weds360/core/helpers/Validation.dart';
 
 import 'package:weds360/pages/home/view/home_screen.dart';
 
@@ -23,31 +24,16 @@ class LoginProviedr extends ChangeNotifier {
   }
 
   void emailValidation(String value) {
-    // if (value != null) {
-    //   if (RegExp(
-    //           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-    //       .hasMatch(value)) {
-    //     _isEmailValid = true;
-    //   } else {
-    //     _isEmailValid = false;
-    //   }
-    // } else {
-    //   _isEmailValid = false;
-    // }
-    // notifyListeners();
+ 
+    _isEmailValid = Validation.emailValidation(value);
+
+    notifyListeners();
   }
 
   void passwordValidation(String value) {
-    // if (value != null) {
-    //   if (RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$").hasMatch(value)) {
-    //     _isPasswordValid = true;
-    //   } else {
-    //     _isPasswordValid = false;
-    //   }
-    // } else {
-    //   _isPasswordValid = false;
-    // }
-    // notifyListeners();
+   
+    _isPasswordValid = Validation.passwordValidation(value);
+    notifyListeners();
   }
 
   bool get isEmailValid {

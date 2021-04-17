@@ -44,7 +44,7 @@ class BudgeterProvider extends ChangeNotifier {
   String newNote;
   String newTitle;
   String newDescription;
-  double newAmount;
+  String newAmount;
   List<String> vendors = [
     'Maga',
     'asdsa',
@@ -56,6 +56,9 @@ class BudgeterProvider extends ChangeNotifier {
     'ijinio',
   ];
   String selctedVendor;
+  bool isTitleValid = true;
+  bool isDescrptionValid = true;
+  bool isAmountValid = true;
   void onChangeBudget(String value) {
     newBudget = int.parse(value);
 
@@ -131,26 +134,55 @@ class BudgeterProvider extends ChangeNotifier {
   }
 
   void onAmountChange(String value) {
-    newAmount = double.parse(value);
+    newAmount = value;
     notifyListeners();
   }
 
-  void addNewBudgetItem() {
-    if (newTitle == null || newDescription == null || newAmount == null) {
-      print(newTitle);
-      print(newDescription);
-      print(newAmount);
+  void titleValidation(String value) {
+    if (value == null) {
+      isTitleValid = false;
     } else {
+      isTitleValid = true;
+    }
+    notifyListeners();
+  }
+
+  void descriptionValidation(String value) {
+    if (value == null) {
+      isDescrptionValid = false;
+    } else {
+      isDescrptionValid = true;
+    }
+    notifyListeners();
+  }
+
+  void amountValidation(String value) {
+    if (value == null || value.isEmpty) {
+      isAmountValid = false;
+    } else {
+      isAmountValid = true;
+    }
+    notifyListeners();
+  }
+
+  void addNewBudgetItem(BuildContext context) {
+    titleValidation(newTitle);
+    descriptionValidation(newDescription);
+    amountValidation(newAmount.toString());
+    if (isTitleValid && isDescrptionValid && isAmountValid) {
       print('YES');
       budgetItems.add(BudgetItem(
         title: newTitle,
-        spent: newAmount,
+        spent: double.parse(newAmount),
         description: newDescription,
       ));
       notifyListeners();
       newTitle = null;
       newDescription = null;
       newAmount = null;
+      Navigator.pop(context);
+    } else {
+      print('NO');
     }
   }
 

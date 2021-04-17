@@ -150,30 +150,42 @@ class _BudgeterScrenState extends State<BudgeterScren> {
                               label: 'Title',
                               prefexIcon: Icons.title_rounded,
                               keyboardType: TextInputType.text,
+                              errorMessege: data.isTitleValid
+                                  ? null
+                                  : 'enter valid title',
                               onChanged: (value) {
                                 data.onTitleChange(value);
                               },
-                              onSubmitted: (_) {},
+                              onSubmitted: (value) {
+                                data.titleValidation(value);
+                              },
                             ),
                             TextFieldCustem(
                               label: 'Description',
                               prefexIcon: Icons.description_outlined,
                               keyboardType: TextInputType.multiline,
+                              errorMessege: data.isDescrptionValid
+                                  ? null
+                                  : 'enter valid description',
                               onChanged: (value) {
                                 data.onDescriptionChange(value);
                               },
-                              onSubmitted: (_) {},
+                              onSubmitted: (value) {
+                                data.descriptionValidation(value);
+                              },
                             ),
                             TextFieldCustem(
                               label: 'Amount',
                               prefexIcon: Icons.monetization_on_outlined,
                               keyboardType: TextInputType.number,
+                              errorMessege: data.isAmountValid
+                                  ? null
+                                  : 'enter valid amount',
                               onChanged: (value) {
                                 data.onAmountChange(value);
                               },
-                              onSubmitted: (_) {
-                                data.addNewBudgetItem();
-                                Navigator.pop(context);
+                              onSubmitted: (value) {
+                                data.amountValidation(value);
                               },
                             ),
                           ],
@@ -181,8 +193,7 @@ class _BudgeterScrenState extends State<BudgeterScren> {
                         actions: [
                           FlatButton(
                             onPressed: () {
-                              data.addNewBudgetItem();
-                              Navigator.pop(context);
+                              data.addNewBudgetItem(context);
                             },
                             child: Text(
                               'Submet',

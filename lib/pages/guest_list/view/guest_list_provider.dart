@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weds360/core/helpers/Validation.dart';
 import 'package:weds360/pages/guest_list/models/age_category.dart';
 import 'package:weds360/pages/guest_list/models/guest_model.dart';
 import 'package:weds360/pages/guest_list/models/invitation_stutes.dart';
@@ -88,7 +89,7 @@ class GuestListProvider extends ChangeNotifier {
         .length;
     return count;
   }
-  
+
   int getDeclinedLenth() {
     int count = guestList
         .where(
@@ -97,7 +98,8 @@ class GuestListProvider extends ChangeNotifier {
         .length;
     return count;
   }
-   int getInvitedLenth() {
+
+  int getInvitedLenth() {
     int count = guestList
         .where(
             (element) => element.invitationStatus == InvitationStatus.INVITED)
@@ -107,39 +109,17 @@ class GuestListProvider extends ChangeNotifier {
   }
 
   void emailValidation(String value) {
-    if (value != null) {
-      if (RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(value)) {
-        _isEmailValid = true;
-      } else {
-        _isEmailValid = false;
-      }
-    } else {
-      _isEmailValid = false;
-    }
+    _isEmailValid = Validation.emailValidation(value);
     notifyListeners();
   }
 
   void nameValdation(String name) {
-    if (name == null || name.isEmpty) {
-      _isNameValid = false;
-    } else {
-      _isNameValid = true;
-    }
+    _isNameValid = Validation.nameValidation(name);
     notifyListeners();
   }
 
   void phoneValdation(String phone) {
-    if (phone != null) {
-      if (RegExp(r"(01)[0-9]{9}").hasMatch(phone)) {
-        _isPhoneValid = true;
-      } else {
-        _isPhoneValid = false;
-      }
-    } else {
-      _isPhoneValid = false;
-    }
+    _isPhoneValid = Validation.phoneValidation(phone);
     notifyListeners();
   }
 

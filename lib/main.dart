@@ -12,6 +12,8 @@ import 'package:weds360/pages/categorys/view/categorys_provider.dart';
 
 import 'package:weds360/pages/categorys/view/categorys_screen.dart';
 import 'package:weds360/pages/drawer/view/drawer_screen.dart';
+import 'package:weds360/pages/edit_profile/view/edit_profile_screen.dart';
+import 'package:weds360/pages/edit_profile/view/edit_profle_provider.dart';
 import 'package:weds360/pages/guest_list/view/guest_list_provider.dart';
 import 'package:weds360/pages/guest_list/view/guest_list_screen.dart';
 import 'package:weds360/pages/home/view/home_provider.dart';
@@ -20,22 +22,31 @@ import 'package:weds360/pages/home/view/home_screen.dart';
 import 'package:weds360/pages/login/view/forget_password/forget_password_provider.dart';
 import 'package:weds360/pages/login/view/login_provider.dart';
 import 'package:weds360/pages/login/view/login_screen.dart';
+import 'package:weds360/pages/messeges/view/messeges_provider.dart';
 import 'package:weds360/pages/messeges/view/messeges_screen.dart';
 
 import 'package:weds360/pages/onbording/view/onbording_screen.dart';
-import 'package:weds360/pages/profile/view/profile_screen.dart';
+
 import 'package:weds360/pages/registry/view/registry_provider.dart';
 import 'package:weds360/pages/registry/view/registry_screen.dart';
+import 'package:weds360/pages/settings/view/settings_provider.dart';
+import 'package:weds360/pages/settings/view/settings_screen.dart';
+import 'package:weds360/pages/signup/view/signup_provider.dart';
 
 import 'package:weds360/pages/signup/view/signup_screen.dart';
 import 'package:weds360/pages/single_blog/view/single_blog_provider.dart';
 import 'package:weds360/pages/single_blog/view/single_blog_screen.dart';
+import 'package:weds360/pages/single_message/view/single_,messasge_screen.dart';
+import 'package:weds360/pages/single_message/view/single_message_provider.dart';
 import 'package:weds360/pages/single_vendor/view/single_vendor_provider.dart';
 import 'package:weds360/pages/single_vendor/view/single_vendor_screen.dart';
 import 'package:weds360/pages/vendors/view/vendors_provider.dart';
 import 'package:weds360/pages/vendors/view/vendors_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:weds360/pages/wedding_detales/view/wedding_detales_provider.dart';
+import 'package:weds360/pages/wedding_detales/view/wedding_detales_screen.dart';
 import 'core/helpers/Constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,9 +59,27 @@ void main() async {
   });
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final bool onBordingFirstTime;
+  static void setLocal(BuildContext context, Locale locale) {
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    state.setLocale(locale);
+  }
+
   MyApp(this.onBordingFirstTime);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale _locale;
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -88,6 +117,24 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => GuestListProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => EditProfileProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SignupProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SettingsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => WeddingDetalesProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => MessagesProvider(),
+        ),
+         ChangeNotifierProvider(
+          create: (context) => SingleMessageProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -104,7 +151,7 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.black,
           visualDensity: VisualDensity.adaptivePlatformDensity,
           errorColor: Colors.red[900],
-          fontFamily: 'raleway',
+          fontFamily: GoogleFonts.raleway().fontFamily,
           textTheme: Theme.of(context).textTheme.copyWith(
                 headline1: TextStyle(
                   fontSize: 25.0,
@@ -151,6 +198,7 @@ class MyApp extends StatelessWidget {
           Locale('en', ''),
           Locale('ar', ''),
         ],
+        locale: _locale,
         localizationsDelegates: [
           AppLocalizations.delegate, // Custem localization For you App
           GlobalMaterialLocalizations.delegate,
@@ -180,7 +228,7 @@ class MyApp extends StatelessWidget {
           HomeScreen.id: (context) => HomeScreen(),
           DrawerScreen.id: (context) => DrawerScreen(),
           BlogScreen.id: (context) => BlogScreen(),
-          ProfileScreen.id: (context) => ProfileScreen(),
+          SettingsScreen.id: (context) => SettingsScreen(),
           CategorysScreen.id: (context) => CategorysScreen(),
           MessegesScreen.id: (context) => MessegesScreen(),
           VendorsScreen.id: (context) => VendorsScreen(),
@@ -189,6 +237,9 @@ class MyApp extends StatelessWidget {
           BudgeterScren.id: (context) => BudgeterScren(),
           RegistryScreen.id: (context) => RegistryScreen(),
           GuestListScreen.id: (context) => GuestListScreen(),
+          EditProfileScreen.id: (context) => EditProfileScreen(),
+          WeddingDetalesScreen.id: (context) => WeddingDetalesScreen(),
+          SingleMessageScreen.id : (context) => SingleMessageScreen(),
         },
       ),
     );

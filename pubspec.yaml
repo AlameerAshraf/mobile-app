@@ -47,6 +47,7 @@ dependencies:
   flutter_speed_dial: ^2.1.1
   flutter_html: ^1.2.0
   image_picker: ^0.6.7+22
+  google_fonts: ^1.1.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
