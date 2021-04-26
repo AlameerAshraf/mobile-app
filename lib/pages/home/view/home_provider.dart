@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:weds360/pages/blog/view/blog_screen.dart';
 import 'package:weds360/pages/categorys/view/categorys_screen.dart';
 import 'package:weds360/pages/home/models/checklist_model.dart';
@@ -6,7 +8,7 @@ import 'package:weds360/pages/home/models/planer_model.dart';
 import 'package:weds360/pages/home/view/Homes_page_body.dart';
 import 'package:weds360/pages/home/view/home_screen.dart';
 import 'package:weds360/pages/messeges/view/messeges_screen.dart';
-import 'package:weds360/pages/profile/view/profile_screen.dart';
+
 import 'package:weds360/pages/settings/view/settings_screen.dart';
 
 class HomeProvider extends ChangeNotifier {
@@ -104,15 +106,13 @@ class HomeProvider extends ChangeNotifier {
       case HomeScreen.id:
         return HomePageBody();
         break;
-      case ProfileScreen.id:
-        return ProfileScreen();
+      case SettingsScreen.id:
+        return SettingsScreen();
         break;
       case BlogScreen.id:
         return BlogScreen();
         break;
-      case SettingsScreen.id:
-        return SettingsScreen();
-        break;
+
       case CategorysScreen.id:
         return CategorysScreen();
         break;
@@ -123,5 +123,19 @@ class HomeProvider extends ChangeNotifier {
       default:
         return HomeScreen();
     }
+  }
+
+  void launchURL(String url) async {
+    await canLaunch(url)
+        ? await launch(
+            url,
+            universalLinksOnly: true,
+          )
+        : throw 'Could not launch $url';
+  }
+
+  void budgeterPersintege(double percent) {
+    planner[2].percent = percent;
+    notifyListeners();
   }
 }

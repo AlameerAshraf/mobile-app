@@ -12,7 +12,7 @@ class CheckListCardView extends StatelessWidget {
     @required this.percent,
     @required this.title,
     @required this.description,
-    @required this.onPressed,
+    this.onPressed,
   });
 
   @override

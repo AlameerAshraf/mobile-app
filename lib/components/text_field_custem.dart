@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weds360/core/helpers/date_text-formater.dart';
 
 class TextFieldCustem extends StatelessWidget {
   final String label;
@@ -8,7 +9,8 @@ class TextFieldCustem extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final String errorMessege;
-
+  final String value;
+  final bool isBirthDay;
   TextFieldCustem({
     @required this.label,
     this.prefexIcon,
@@ -17,16 +19,20 @@ class TextFieldCustem extends StatelessWidget {
     this.keyboardType,
     this.obscureText,
     this.errorMessege,
+    this.value,
+    this.isBirthDay = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      initialValue: value,
       cursorColor: Theme.of(context).accentColor,
       keyboardType: keyboardType,
       textInputAction: TextInputAction.next,
       onChanged: onChanged,
-      onSubmitted: onSubmitted,
+      onFieldSubmitted: onSubmitted,
+      inputFormatters: isBirthDay ? [DateTextFormatter()] : null,
       obscureText: obscureText != null ? obscureText : false,
       decoration: InputDecoration(
         focusColor: Theme.of(context).accentColor,

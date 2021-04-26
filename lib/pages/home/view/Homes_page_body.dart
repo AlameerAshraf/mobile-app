@@ -5,10 +5,13 @@ import 'package:provider/provider.dart';
 import 'package:weds360/components/check_list_card_view.dart';
 import 'package:weds360/components/tab_card_view.dart';
 import 'package:weds360/core/helpers/Constants.dart';
+import 'package:weds360/pages/budgeter/view/budgeter_screen.dart';
+import 'package:weds360/pages/guest_list/view/guest_list_screen.dart';
 import 'package:weds360/pages/home/view/add_checklist_item_dialog.dart';
 import 'package:weds360/pages/home/view/change_title_dialog.dart';
 import 'package:weds360/pages/home/view/home_provider.dart';
 import 'package:weds360/pages/home/view/profile_section_home.dart';
+import 'package:weds360/pages/registry/view/registry_screen.dart';
 
 class HomePageBody extends StatefulWidget {
   @override
@@ -103,27 +106,43 @@ class _HomePageBodyState extends State<HomePageBody>
                               parent: animationController,
                               curve: Interval(start, end))),
                           child: CheckListCardView(
-                            percent: animationController.value *
-                                home.planner[index].percent,
-                            title: home.planner[index].title,
-                            description: home.planner[index].description,
-                            onPressed: () {
-                              showModalBottomSheet(
-                                  // isScrollControlled:
-                                  //     true,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(ROUNDED),
-                                  ),
-                                  elevation: 5.0,
-                                  context: context,
-                                  builder: (context) {
-                                    return index == home.planner.length - 1
-                                        ? checkList(index)
-                                        : Container();
-                                  });
-                            },
-                          ),
+                              percent: animationController.value *
+                                  home.planner[index].percent,
+                              title: home.planner[index].title,
+                              description: home.planner[index].description,
+                              onPressed: () {
+                                if (index == home.planner.length - 1) {
+                                  // CheckList
+                                  showModalBottomSheet(
+                                      // isScrollControlled:
+                                      //     true,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(ROUNDED),
+                                            topRight: Radius.circular(ROUNDED)),
+                                      ),
+                                      elevation: 5.0,
+                                      context: context,
+                                      builder: (context) {
+                                        return checkList(index);
+                                      });
+                                } else if (index == 0) {
+                                  // GuestList
+                                  Navigator.pushNamed(
+                                      context, GuestListScreen.id);
+                                } else if (index == 1) {
+                                  // Wedding Webstie
+                                  home.launchURL('https://www.google.com/');
+                                } else if (index == 2) {
+                                  // Budgeter
+                                  Navigator.pushNamed(
+                                      context, BudgeterScren.id);
+                                } else if (index == 3) {
+                                  // Regestry
+                                  Navigator.pushNamed(
+                                      context, RegistryScreen.id);
+                                }
+                              }),
                         );
                       },
                     ),

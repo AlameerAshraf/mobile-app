@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/core/helpers/app_localizations.dart';
 import 'package:weds360/pages/login/view/login_screen.dart';
+import 'package:weds360/pages/onbording/view/onbording_provider.dart';
 import 'package:weds360/pages/onbording/view/raised_button_next.dart';
 
 class OnBordingScreen extends StatefulWidget {
@@ -16,6 +18,7 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
   int selctedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final onBordingData = Provider.of<OnBordingProvider>(context);
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
@@ -136,14 +139,14 @@ class _OnBordingScreenState extends State<OnBordingScreen> {
                                 ),
                           ),
                           onPressed: () {
-                            Navigator.popAndPushNamed(context, LoginScreen.id);
+                            onBordingData.start(context);
                           },
                         )
                       : RaisedButtonNext(
                           title: AppLocalizations.of(context)
                               .translate('onbording_screen_one_start_Button'),
                           onPressed: () {
-                            Navigator.popAndPushNamed(context, LoginScreen.id);
+                            onBordingData.start(context);
                           },
                         )
                 ],

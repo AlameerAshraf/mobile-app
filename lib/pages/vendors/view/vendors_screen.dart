@@ -1,18 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
-import 'package:provider/provider.dart';
-import 'package:weds360/components/rating_card.dart';
 
 import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/pages/blog/view/search_hestroy.dart';
-import 'package:weds360/pages/categorys/view/categorys_provider.dart';
+
 import 'package:weds360/pages/vendors/view/carsual_baner_view.dart';
 import 'package:weds360/pages/vendors/view/featured_vendors_view.dart';
 import 'package:weds360/pages/vendors/view/filtter_sheet_view.dart';
 import 'package:weds360/pages/vendors/view/header_change_category_view.dart';
 import 'package:weds360/pages/vendors/view/vendors_listView.dart';
-import 'package:weds360/pages/vendors/view/vendors_provider.dart';
+
 
 class VendorsScreen extends StatefulWidget {
   static const String id = 'Vendors';

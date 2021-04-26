@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 const PRODUCTION_BASE_URL = '';
-const PRE_PRODUCTION_BASE_URL = '';
+const PRE_PRODUCTION_BASE_URL = 'http://10.0.2.2:3255/';
+const CLINTID = '9c3ZRTfD8zfs9wHknZFLp9ycYjG45lXBJftPoQSTbW4=';
 const kPADDING = 8.0;
 const kFirstTime = 'First Time';
 const Duration kBaseSettleDuration = Duration(milliseconds: 246);
