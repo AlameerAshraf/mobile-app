@@ -18,49 +18,55 @@ class _SingleVendorScreenState extends State<SingleVendorScreen> {
   @override
   Widget build(BuildContext context) {
     final data = Provider.of<SingleVendorProvider>(context);
-    return Scaffold(
-        body: CustomScrollView(
-          slivers: [
-            SliverAppbarImages(),
-            SliverBody(),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return Reviewitem(
-                    imagePath:
-                        data.singleVendrorModel.reviewsList[index].imagePath,
-                    name: data.singleVendrorModel.reviewsList[index].name,
-                    rate: data.singleVendrorModel.reviewsList[index].rate,
-                    content: data.singleVendrorModel.reviewsList[index].content,
-                  );
-                },
-                childCount: data.singleVendrorModel.reviewsList.length,
-              ),
-            )
-          ],
-        ),
-        floatingActionButton: SpeedDial(
-          icon: Icons.call,
-          foregroundColor: Theme.of(context).scaffoldBackgroundColor,
-          backgroundColor: Theme.of(context).primaryColor,
-          activeIcon: Icons.remove,
-          children: [
-            SpeedDialChild(
-              child: Icon(Icons.call,
-                  color: Theme.of(context).scaffoldBackgroundColor),
-              backgroundColor: Theme.of(context).accentColor,
-              onTap: () {
-                data.launchURL('tel:' + data.singleVendrorModel.phone);
-              },
+    data.getData(id: '6061b86e553720132028ee64', context: context);
+    return data.singleVendrorModel == null
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : Scaffold(
+            body: CustomScrollView(
+              slivers: [
+                SliverAppbarImages(),
+                SliverBody(),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return Reviewitem(
+                        imagePath: data
+                            .singleVendrorModel.reviewsList[index].imagePath,
+                        name: data.singleVendrorModel.reviewsList[index].name,
+                        rate: data.singleVendrorModel.reviewsList[index].rate,
+                        content:
+                            data.singleVendrorModel.reviewsList[index].content,
+                      );
+                    },
+                    childCount: data.singleVendrorModel.reviewsList.length,
+                  ),
+                )
+              ],
             ),
-            SpeedDialChild(
-              child: Icon(Icons.message,
-                  color: Theme.of(context).scaffoldBackgroundColor),
-              onTap: () {},
-              backgroundColor: Theme.of(context).accentColor,
-            ),
-          ],
-        ));
+            floatingActionButton: SpeedDial(
+              icon: Icons.call,
+              foregroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: Theme.of(context).primaryColor,
+              activeIcon: Icons.remove,
+              children: [
+                SpeedDialChild(
+                  child: Icon(Icons.call,
+                      color: Theme.of(context).scaffoldBackgroundColor),
+                  backgroundColor: Theme.of(context).accentColor,
+                  onTap: () {
+                    data.launchURL('tel:' + data.singleVendrorModel.phone);
+                  },
+                ),
+                SpeedDialChild(
+                  child: Icon(Icons.message,
+                      color: Theme.of(context).scaffoldBackgroundColor),
+                  onTap: () {},
+                  backgroundColor: Theme.of(context).accentColor,
+                ),
+              ],
+            ));
   }
 }
 // IconButton(

@@ -61,6 +61,7 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   final bool onBordingFirstTime;
+
   static void setLocal(BuildContext context, Locale locale) {
     _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
     state.setLocale(locale);
@@ -74,6 +75,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale _locale;
+
   void setLocale(Locale locale) {
     setState(() {
       _locale = locale;
@@ -132,7 +134,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (context) => MessagesProvider(),
         ),
-         ChangeNotifierProvider(
+        ChangeNotifierProvider(
           create: (context) => SingleMessageProvider(),
         ),
       ],
@@ -217,10 +219,7 @@ class _MyAppState extends State<MyApp> {
           return supportedLocales.first;
         },
         initialRoute:
-            //  onBordingFirstTime ,
-            //  ?BottomNavBar.id,
-            // :
-            OnBordingScreen.id,
+            widget.onBordingFirstTime ? OnBordingScreen.id : LoginScreen.id,
         routes: {
           LoginScreen.id: (context) => LoginScreen(),
           SignUpScreen.id: (context) => SignUpScreen(),
@@ -239,7 +238,7 @@ class _MyAppState extends State<MyApp> {
           GuestListScreen.id: (context) => GuestListScreen(),
           EditProfileScreen.id: (context) => EditProfileScreen(),
           WeddingDetalesScreen.id: (context) => WeddingDetalesScreen(),
-          SingleMessageScreen.id : (context) => SingleMessageScreen(),
+          SingleMessageScreen.id: (context) => SingleMessageScreen(),
         },
       ),
     );

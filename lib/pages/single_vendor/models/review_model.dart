@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 
 class ReviewModel {
@@ -11,5 +13,15 @@ class ReviewModel {
     @required this.rate,
     @required this.content,
   });
-  
+  factory ReviewModel.fromMap(Map<String, dynamic> map) {
+    return ReviewModel(
+      imagePath: map['image'],
+      name: map['name'],
+      rate: map['rate'],
+      content: map['content'],
+    );
+  }
+
+  factory ReviewModel.fromJson(String source) =>
+      ReviewModel.fromMap(json.decode(source));
 }

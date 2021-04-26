@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:weds360/core/helpers/Constants.dart';
 import 'package:weds360/core/helpers/Validation.dart';
 import 'package:weds360/pages/signup/models/signup_model.dart';
+import 'package:weds360/pages/signup/services/signup_service.dart';
+import 'package:flash/flash.dart';
 
 class SignupProvider extends ChangeNotifier {
   SignupModel signupModel = new SignupModel();
@@ -9,15 +13,17 @@ class SignupProvider extends ChangeNotifier {
   bool isEmailValid = true;
   bool isPasswordValid = true;
   bool isConfermPasswordValid = true;
+  bool isLodding = false;
+  String snackbardata;
   void onChangeName(String value) {
     signupModel.name = value;
     notifyListeners();
   }
 
-  void onChangePartnerName(String value) {
-    signupModel.partnerName = value;
-    notifyListeners();
-  }
+  // void onChangePartnerName(String value) {
+  //   signupModel.partnerName = value;
+  //   notifyListeners();
+  // }
 
   void onChangeEmail(String value) {
     signupModel.email = value;
@@ -63,27 +69,57 @@ class SignupProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void signup(BuildContext context) {
+  void signup(BuildContext context) async {
     nameValidation(signupModel.name);
-    parterNameValidation(signupModel.partnerName);
+    // parterNameValidation(signupModel.partnerName);
 
     emailValidation(signupModel.email);
     passwordValidation(signupModel.password);
     confermPasswordValidation(signupModel.confermPassword);
     if (isNameValid &&
-        isPartnerNameValid &&
+        // isPartnerNameValid &&
         isEmailValid &&
         isPasswordValid &&
         isConfermPasswordValid) {
-      clear();
-      Navigator.pop(context);
+      try {
+        print('yes');
+        isLodding = true;
+        await SignupService.signUp(signupModel);
+        print('yes');
+        notifyListeners();
+        isLodding = false;
+        clear();
+        notifyListeners();
+        Navigator.pop(context);
+      } catch (e) {
+        showFlash(
+          context: context,
+          duration: Duration(seconds: 3),
+          builder: (context, controller) {
+            return Flash(
+              controller: controller,
+              backgroundColor: Theme.of(context).primaryColor,
+              boxShadows: kElevationToShadow[4],
+              horizontalDismissDirection: HorizontalDismissDirection.horizontal,
+              child: FlashBar(
+                message: Text(e.toString()),
+              ),
+            );
+          },
+        );
+        print('No');
+
+        isLodding = false;
+        notifyListeners();
+      }
     }
+
     notifyListeners();
   }
 
   void clear() {
     signupModel.name = null;
-    signupModel.partnerName = null;
+    // signupModel.partnerName = null;
 
     signupModel.email = null;
     signupModel.password = null;

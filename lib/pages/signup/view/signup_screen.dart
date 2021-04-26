@@ -64,20 +64,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         signUpData.nameValidation(value);
                       },
                     ),
-                    TextFieldCustem(
-                      label: 'Partner Name',
-                      prefexIcon: Icons.person,
-                      keyboardType: TextInputType.name,
-                      errorMessege: signUpData.isPartnerNameValid
-                          ? null
-                          : 'please enter valid name',
-                      onChanged: (value) {
-                        signUpData.onChangePartnerName(value);
-                      },
-                      onSubmitted: (value) {
-                        signUpData.parterNameValidation(value);
-                      },
-                    ),
+                    // TextFieldCustem(
+                    //   label: 'Partner Name',
+                    //   prefexIcon: Icons.person,
+                    //   keyboardType: TextInputType.name,
+                    //   errorMessege: signUpData.isPartnerNameValid
+                    //       ? null
+                    //       : 'please enter valid name',
+                    //   onChanged: (value) {
+                    //     signUpData.onChangePartnerName(value);
+                    //   },
+                    //   onSubmitted: (value) {
+                    //     signUpData.parterNameValidation(value);
+                    //   },
+                    // ),
                     TextFieldCustem(
                       label: 'Email',
                       prefexIcon: Icons.email_outlined,
@@ -129,8 +129,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         onPressed: () {
                           signUpData.signup(context);
                         },
+                        isLooding: signUpData.isLodding,
                       ),
-                    )
+                    ),
+                   
                   ],
                 ),
               ),

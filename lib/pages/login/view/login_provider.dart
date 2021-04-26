@@ -1,9 +1,12 @@
+import 'package:flash/flash.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:weds360/core/helpers/Validation.dart';
 
 import 'package:weds360/pages/home/view/home_screen.dart';
 
 import 'package:weds360/pages/login/models/login_model.dart';
+import 'package:weds360/pages/login/services/login_service.dart';
 import 'package:weds360/pages/login/services/login_with_facebook.dart';
 import 'package:weds360/pages/login/services/login_with_google.dart';
 import 'package:weds360/pages/signup/view/signup_screen.dart';
@@ -12,7 +15,7 @@ class LoginProviedr extends ChangeNotifier {
   LoginModel loginModel = LoginModel();
   bool _isEmailValid = true;
   bool _isPasswordValid = true;
-
+  bool isLodding = false;
   void onChangedEmail(String value) {
     loginModel.email = value;
     notifyListeners();
@@ -24,14 +27,12 @@ class LoginProviedr extends ChangeNotifier {
   }
 
   void emailValidation(String value) {
- 
     _isEmailValid = Validation.emailValidation(value);
 
     notifyListeners();
   }
 
   void passwordValidation(String value) {
-   
     _isPasswordValid = Validation.passwordValidation(value);
     notifyListeners();
   }
@@ -44,12 +45,36 @@ class LoginProviedr extends ChangeNotifier {
     return _isPasswordValid;
   }
 
-  void login(BuildContext context) {
+  void login(BuildContext context) async {
     emailValidation(loginModel.email);
     passwordValidation(loginModel.password);
     if (_isEmailValid && _isPasswordValid) {
-      _clear();
-      Navigator.popAndPushNamed(context, HomeScreen.id);
+      try {
+        isLodding = true;
+        await LoginService.signin(loginModel);
+        notifyListeners();
+        isLodding = false;
+        _clear();
+        notifyListeners();
+        Navigator.popAndPushNamed(context, HomeScreen.id);
+      } catch (e) {
+        showFlash(
+          context: context,
+          duration: Duration(seconds: 3),
+          builder: (context, controller) {
+            return Flash(
+              controller: controller,
+              backgroundColor: Theme.of(context).primaryColor,
+              boxShadows: kElevationToShadow[4],
+              horizontalDismissDirection: HorizontalDismissDirection.horizontal,
+              child: FlashBar(
+                message: Text(e.toString()),
+              ),
+            );
+          },
+        );
+        isLodding = false;
+      }
     }
     notifyListeners();
   }

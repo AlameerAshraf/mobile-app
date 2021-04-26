@@ -116,6 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       loginData.login(context);
                     },
+                    isLooding: loginData.isLodding,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 8.0),
